@@ -1,5 +1,5 @@
 const proSettings = {
-  navTheme: 'dark',
+  navTheme: 'light',
   // 拂晓蓝
   primaryColor: '#1890ff',
   layout: 'side',
@@ -14,4 +14,5 @@ const proSettings = {
   pwa: false,
   iconfontUrl: '',
 };
+
 export default proSettings;

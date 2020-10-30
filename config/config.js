@@ -64,7 +64,60 @@ export default defineConfig({
           routes: [
             {
               path: '/',
-              redirect: '/dashboard/analysis',
+              redirect: '/overview',
+            },
+            {
+              name: 'overview',
+              icon: 'smile',
+              path: '/overview',
+              component: './Overview/OverviewDefault',
+            },
+            {
+              path: '/userManagement',
+              name: 'userManagement',
+              icon: 'dashboard',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/userManagement/userManagementDefault',
+                },
+                {
+                  name: 'log',
+                  icon: 'smile',
+                  path: '/userManagement/log',
+                  component: './UserManagement/Log',
+                },
+                {
+                  name: 'userManagementDefault',
+                  icon: 'smile',
+                  path: '/userManagement/userManagementDefault',
+                  component: './UserManagement/UserManagementDefault',
+                },
+                {
+                  name: 'groups',
+                  icon: 'smile',
+                  path: '/userManagement/groupsManagement',
+                  component: './UserManagement/GroupsManagement',
+                },
+                {
+                  name: 'roles',
+                  icon: 'smile',
+                  path: '/userManagement/rolesManagement',
+                  component: './UserManagement/RolesManagement',
+                },
+                {
+                  name: 'policy',
+                  icon: 'smile',
+                  path: '/userManagement/policyManagement',
+                  component: './UserManagement/PolicyManagement',
+                },
+                {
+                  name: 'identityProvider',
+                  icon: 'smile',
+                  path: '/userManagement/identityProvider',
+                  component: './UserManagement/IdentityProvider',
+                },
+              ]
             },
             {
               path: '/dashboard',
