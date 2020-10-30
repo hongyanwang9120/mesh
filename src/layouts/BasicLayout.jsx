@@ -11,7 +11,9 @@ import { Result, Button } from 'antd';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { getAuthorityFromRouter } from '@/utils/utils';
+// import logo from '../assets/logo.svg';
 import logo from '../assets/logo.svg';
+
 const noMatch = (
   <Result
     status={403}
@@ -39,7 +41,7 @@ const menuDataRender = (menuList) =>
 
 const defaultFooterDom = (
   <DefaultFooter
-    copyright={`${new Date().getFullYear()} 蚂蚁金服体验技术部出品`}
+    copyright={`${new Date().getFullYear()} DTG技术部出品`}
     links={[
       {
         key: 'Ant Design Pro',

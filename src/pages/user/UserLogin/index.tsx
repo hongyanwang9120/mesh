@@ -1,12 +1,22 @@
 import { AlipayCircleOutlined, TaobaoCircleOutlined, WeiboCircleOutlined } from '@ant-design/icons';
 import { Alert, Checkbox } from 'antd';
 import React, { useState } from 'react';
-import { Link, connect } from 'umi';
+import { Dispatch, Link, connect } from 'umi';
+import { StateType } from './model';
 import styles from './style.less';
+import { LoginParamsType } from './service';
 import LoginFrom from './components/Login';
-const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginFrom;
 
-const LoginMessage = ({ content }) => (
+const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginFrom;
+interface UserLoginProps {
+  dispatch: Dispatch;
+  userLogin: StateType;
+  submitting?: boolean;
+}
+
+const LoginMessage: React.FC<{
+  content: string;
+}> = ({ content }) => (
   <Alert
     style={{
       marginBottom: 24,
@@ -17,20 +27,22 @@ const LoginMessage = ({ content }) => (
   />
 );
 
-const Login = (props) => {
-  const { userAndlogin = {}, submitting } = props;
-  const { status, type: loginType } = userAndlogin;
+const UserLogin: React.FC<UserLoginProps> = (props) => {
+  const { userLogin = {}, submitting } = props;
+  const { status, type: loginType } = userLogin;
   const [autoLogin, setAutoLogin] = useState(true);
-  const [type, setType] = useState('account');
+  const [type, setType] = useState<string>('account');
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values: LoginParamsType) => {
     const { dispatch } = props;
     dispatch({
-      type: 'userAndlogin/login',
-      payload: { ...values, type },
+      type: 'userLogin/login',
+      payload: {
+        ...values,
+        type,
+      },
     });
   };
-
   return (
     <div className={styles.main}>
       <LoginFrom activeKey={type} onTabChange={setType} onSubmit={handleSubmit}>
@@ -51,7 +63,7 @@ const Login = (props) => {
           />
           <Password
             name="password"
-            placeholder="密码: ant.design"
+            placeholder="密码: hywang"
             rules={[
               {
                 required: true,
@@ -106,10 +118,10 @@ const Login = (props) => {
         </div>
         <Submit loading={submitting}>登录</Submit>
         <div className={styles.other}>
-          其他登录方式
+          {/* 其他登录方式
           <AlipayCircleOutlined className={styles.icon} />
           <TaobaoCircleOutlined className={styles.icon} />
-          <WeiboCircleOutlined className={styles.icon} />
+          <WeiboCircleOutlined className={styles.icon} /> */}
           <Link className={styles.register} to="/user/register">
             注册账户
           </Link>
@@ -119,7 +131,19 @@ const Login = (props) => {
   );
 };
 
-export default connect(({ userAndlogin, loading }) => ({
-  userAndlogin,
-  submitting: loading.effects['userAndlogin/login'],
-}))(Login);
+export default connect(
+  ({
+    userLogin,
+    loading,
+  }: {
+    userLogin: StateType;
+    loading: {
+      effects: {
+        [key: string]: boolean;
+      };
+    };
+  }) => ({
+    userLogin,
+    submitting: loading.effects['userLogin/login'],
+  }),
+)(UserLogin);

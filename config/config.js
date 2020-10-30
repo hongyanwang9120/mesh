@@ -33,8 +33,10 @@ export default defineConfig({
           component: '../layouts/UserLayout',
           routes: [
             {
-              path: '/user',
-              redirect: '/user/login',
+              name: 'login',
+              icon: 'smile', 
+              path: '/user/login',
+              component: './user/UserLogin',
             },
             {
               name: 'register-result',
@@ -48,6 +50,7 @@ export default defineConfig({
               path: '/user/register',
               component: './user/register',
             },
+    
             {
               component: '404',
             },

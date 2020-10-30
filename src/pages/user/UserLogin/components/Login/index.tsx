@@ -2,33 +2,57 @@ import { Tabs, Form } from 'antd';
 import React, { useState } from 'react';
 import useMergeValue from 'use-merge-value';
 import classNames from 'classnames';
+import { FormInstance } from 'antd/es/form';
 import LoginContext from './LoginContext';
-import LoginItem from './LoginItem';
+import LoginItem, { LoginItemProps } from './LoginItem';
+
 import LoginSubmit from './LoginSubmit';
 import LoginTab from './LoginTab';
 import styles from './index.less';
+import { LoginParamsType } from '../../service';
 
-const Login = (props) => {
+export interface LoginProps {
+  activeKey?: string;
+  onTabChange?: (key: string) => void;
+  style?: React.CSSProperties;
+  onSubmit?: (values: LoginParamsType) => void;
+  className?: string;
+  form?: FormInstance;
+  children: React.ReactElement<typeof LoginTab>[];
+}
+
+interface LoginType extends React.FC<LoginProps> {
+  Tab: typeof LoginTab;
+  Submit: typeof LoginSubmit;
+  UserName: React.FunctionComponent<LoginItemProps>;
+  Password: React.FunctionComponent<LoginItemProps>;
+  Mobile: React.FunctionComponent<LoginItemProps>;
+  Captcha: React.FunctionComponent<LoginItemProps>;
+}
+
+const Login: LoginType = (props) => {
   const { className } = props;
-  const [tabs, setTabs] = useState([]);
-  const [active, setActive] = useState({});
+  const [tabs, setTabs] = useState<string[]>([]);
+  const [active, setActive] = useState();
   const [type, setType] = useMergeValue('', {
     value: props.activeKey,
     onChange: props.onTabChange,
   });
-  const TabChildren = [];
-  const otherChildren = [];
-  React.Children.forEach(props.children, (child) => {
-    if (!child) {
-      return;
-    }
-
-    if (child.type.typeName === 'LoginTab') {
-      TabChildren.push(child);
-    } else {
-      otherChildren.push(child);
-    }
-  });
+  const TabChildren: React.ReactComponentElement<typeof LoginTab>[] = [];
+  const otherChildren: React.ReactElement<unknown>[] = [];
+  React.Children.forEach(
+    props.children,
+    (child: React.ReactComponentElement<typeof LoginTab> | React.ReactElement<unknown>) => {
+      if (!child) {
+        return;
+      }
+      if ((child.type as { typeName: string }).typeName === 'LoginTab') {
+        TabChildren.push(child as React.ReactComponentElement<typeof LoginTab>);
+      } else {
+        otherChildren.push(child);
+      }
+    },
+  );
   return (
     <LoginContext.Provider
       value={{
@@ -41,12 +65,11 @@ const Login = (props) => {
           },
         },
         updateActive: (activeItem) => {
-          if (active && active[type]) {
+          if (active[type]) {
             active[type].push(activeItem);
-          } else if (active) {
+          } else {
             active[type] = [activeItem];
           }
-
           setActive(active);
         },
       }}
@@ -56,7 +79,7 @@ const Login = (props) => {
           form={props.form}
           onFinish={(values) => {
             if (props.onSubmit) {
-              props.onSubmit(values);
+              props.onSubmit(values as LoginParamsType);
             }
           }}
         >
@@ -85,8 +108,10 @@ const Login = (props) => {
 
 Login.Tab = LoginTab;
 Login.Submit = LoginSubmit;
+
 Login.UserName = LoginItem.UserName;
 Login.Password = LoginItem.Password;
 Login.Mobile = LoginItem.Mobile;
 Login.Captcha = LoginItem.Captcha;
+
 export default Login;
