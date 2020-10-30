@@ -66,12 +66,14 @@ export default defineConfig({
               path: '/',
               redirect: '/overview',
             },
+            // 概览
             {
               name: 'overview',
               icon: 'smile',
               path: '/overview',
               component: './Overview/OverviewDefault',
             },
+            // 用户管理
             {
               path: '/userManagement',
               name: 'userManagement',
@@ -119,6 +121,135 @@ export default defineConfig({
                 },
               ]
             },
+            // 配置管理
+            {
+              path: '/configuration',
+              name: 'configurationManagement',
+              icon: 'dashboard',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/configuration/siteManager',
+                },
+                {
+                  name: 'SiteManager',
+                  icon: 'smile',
+                  path: '/configuration/siteManager',
+                  component: './Configuration/SiteManager',
+                },
+                {
+                  name: 'remoteConnection',
+                  icon: 'smile',
+                  path: '/configuration/remoteConnection',
+                  component: './Configuration/remoteConnection',
+                },
+                {
+                  name: 'log',
+                  icon: 'smile',
+                  path: '/configuration/log',
+                  component: './Configuration/Log',
+                },
+              ]
+            },
+            // 策略&对象
+            {
+              path: '/policyObject',
+              name: 'policyObject',
+              icon: 'dashboard',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/policyObject/ObjectManagement',
+                },
+                {
+                  name: 'ObjectManagement',
+                  icon: 'smile',
+                  path: '/policyObject/ObjectManagement',
+                  component: './PolicyObject/ObjectManagement',
+                },
+                {
+                  name: 'netRules',
+                  icon: 'smile',
+                  path: '/policyObject/netRules',
+                  component: './PolicyObject/NetRules',
+                },
+                {
+                  name: 'policyManagement',
+                  icon: 'smile',
+                  path: '/policyObject/policyManagement',
+                  component: './PolicyObject/PolicyManagement',
+                },
+                {
+                  name: 'log',
+                  icon: 'smile',
+                  path: '/policyObject/log',
+                  component: './PolicyObject/Log',
+                },
+              ]
+            },
+            // 监控管理
+            {
+              path: '/monitoringManagement',
+              name: 'monitoring',
+              icon: 'dashboard',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/monitoringManagement/sitesMonitoring',
+                },
+                {
+                  name: 'sitesMonitoring',
+                  icon: 'smile',
+                  path: '/monitoringManagement/sitesMonitoring',
+                  component: './MonitoringManagement/SitesMonitoring',
+                },
+                {
+                  name: 'userVPNMonitoring',
+                  icon: 'smile',
+                  path: '/monitoringManagement/userVPNMonitoring',
+                  component: './MonitoringManagement/UserVPNMonitoring',
+                },
+                {
+                  name: 'sessionPolicy',
+                  icon: 'smile',
+                  path: '/monitoringManagement/sessionPolicy',
+                  component: './MonitoringManagement/SessionPolicy',
+                },
+                {
+                  name: 'alertLog',
+                  icon: 'smile',
+                  path: '/monitoringManagement/alertLog',
+                  component: './MonitoringManagement/AlertLog',
+                },
+              ]
+            },
+              // 账单管理
+              {
+                path: '/archivmeHD',
+                name: 'archivmeHD',
+                icon: 'dashboard',
+                routes: [
+                  {
+                    path: '/',
+                    redirect: '/archivmeHD/sitesMonitoring',
+                  },
+                  {
+                    name: 'overview',
+                    icon: 'smile',
+                    path: '/archivmeHD/overview',
+                    component: './ArchivmeHD/Overview',
+                  },
+                  {
+                    name: 'orderManagement',
+                    icon: 'smile',
+                    path: '/archivmeHD/orderManagement',
+                    component: './ArchivmeHD/OrderManagement',
+                  }
+                
+                ]
+              },
+
+
             {
               path: '/dashboard',
               name: 'dashboard',

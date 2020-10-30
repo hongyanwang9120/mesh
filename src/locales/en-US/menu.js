@@ -15,6 +15,28 @@ export default {
   'menu.userManagement.roles':'roles',
   'menu.userManagement.policy':'policy',
   'menu.userManagement.identityProvider':'identityProvider',
+
+  'menu.configurationManagement':'Configuration',
+  'menu.configurationManagement.SiteManager':'SiteManager',
+  'menu.configurationManagement.remoteConnection':'remoteConnection',
+  'menu.configurationManagement.log':'Log',
+
+  'menu.policyObject':'PolicyObject',
+  'menu.policyObject.ObjectManagement':'ObjectManagement',
+  'menu.policyObject.netRules':'NetRules',
+  'menu.policyObject.policyManagement':'PolicyManagement',
+  'menu.policyObject.log':'Log',
+
+  'menu.monitoring':'Monitoring',
+  'menu.monitoring.sitesMonitoring':'SitesMonitoring',
+  'menu.monitoring.userVPNMonitoring':'UserVPNMonitoring',
+  'menu.monitoring.sessionPolicy':'SessionPolicy',
+  'menu.monitoring.alertLog':'AlertLog',
+
+  'menu.archivmeHD':'ArchivmeHD',
+  'menu.archivmeHD.overview':'Overview',
+  'menu.archivmeHD.orderManagement':'OrderManagement',
+
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': 'Analysis',
   'menu.dashboard.monitor': 'Monitor',

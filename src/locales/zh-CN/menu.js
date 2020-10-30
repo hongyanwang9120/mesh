@@ -15,6 +15,28 @@ export default {
   'menu.userManagement.roles':'角色管理',
   'menu.userManagement.policy':'策略管理',
   'menu.userManagement.identityProvider':'身份提供商',
+
+  'menu.configurationManagement':'配置管理',
+  'menu.configurationManagement.SiteManager':'站点管理',
+  'menu.configurationManagement.remoteConnection':'远程连接',
+  'menu.configurationManagement.log':'日志',
+
+  'menu.policyObject':'策略&对象',
+  'menu.policyObject.ObjectManagement':'对象管理',
+  'menu.policyObject.netRules':'网络规则',
+  'menu.policyObject.policyManagement':'策略管理',
+  'menu.policyObject.log':'日志',
+
+  'menu.monitoring':'监控管理',
+  'menu.monitoring.sitesMonitoring':'站点监控',
+  'menu.monitoring.userVPNMonitoring':'VPN用户监控',
+  'menu.monitoring.sessionPolicy':'策略会话',
+  'menu.monitoring.alertLog':'日志警告',
+
+  'menu.archivmeHD':'账单管理',
+  'menu.archivmeHD.overview':'账单概览',
+  'menu.archivmeHD.orderManagement':'订单管理',
+
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': '分析页',
   'menu.dashboard.monitor': '监控页',
