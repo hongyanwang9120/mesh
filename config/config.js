@@ -34,7 +34,7 @@ export default defineConfig({
           routes: [
             {
               name: 'login',
-              icon: 'smile', 
+              icon: 'smile',
               path: '/user/login',
               component: './user/UserLogin',
             },
@@ -50,7 +50,6 @@ export default defineConfig({
               path: '/user/register',
               component: './user/register',
             },
-    
             {
               component: '404',
             },
@@ -66,14 +65,13 @@ export default defineConfig({
               path: '/',
               redirect: '/overview',
             },
-            // 概览
             {
+             
               name: 'overview',
               icon: 'smile',
               path: '/overview',
               component: './Overview/OverviewDefault',
-            },
-            // 用户管理
+            }, // 用户管理
             {
               path: '/userManagement',
               name: 'userManagement',
@@ -119,9 +117,8 @@ export default defineConfig({
                   path: '/userManagement/identityProvider',
                   component: './UserManagement/IdentityProvider',
                 },
-              ]
-            },
-            // 配置管理
+              ],
+            }, // 配置管理
             {
               path: '/configuration',
               name: 'configurationManagement',
@@ -149,9 +146,8 @@ export default defineConfig({
                   path: '/configuration/log',
                   component: './Configuration/Log',
                 },
-              ]
-            },
-            // 策略&对象
+              ],
+            }, // 策略&对象
             {
               path: '/policyObject',
               name: 'policyObject',
@@ -185,9 +181,8 @@ export default defineConfig({
                   path: '/policyObject/log',
                   component: './PolicyObject/Log',
                 },
-              ]
-            },
-            // 监控管理
+              ],
+            }, // 监控管理
             {
               path: '/monitoringManagement',
               name: 'monitoring',
@@ -221,35 +216,31 @@ export default defineConfig({
                   path: '/monitoringManagement/alertLog',
                   component: './MonitoringManagement/AlertLog',
                 },
-              ]
+              ],
+            }, // 账单管理
+            {
+              path: '/archivmeHD',
+              name: 'archivmeHD',
+              icon: 'dashboard',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/archivmeHD/sitesMonitoring',
+                },
+                {
+                  name: 'overview',
+                  icon: 'smile',
+                  path: '/archivmeHD/overview',
+                  component: './ArchivmeHD/Overview',
+                },
+                {
+                  name: 'orderManagement',
+                  icon: 'smile',
+                  path: '/archivmeHD/orderManagement',
+                  component: './ArchivmeHD/OrderManagement',
+                },
+              ],
             },
-              // 账单管理
-              {
-                path: '/archivmeHD',
-                name: 'archivmeHD',
-                icon: 'dashboard',
-                routes: [
-                  {
-                    path: '/',
-                    redirect: '/archivmeHD/sitesMonitoring',
-                  },
-                  {
-                    name: 'overview',
-                    icon: 'smile',
-                    path: '/archivmeHD/overview',
-                    component: './ArchivmeHD/Overview',
-                  },
-                  {
-                    name: 'orderManagement',
-                    icon: 'smile',
-                    path: '/archivmeHD/orderManagement',
-                    component: './ArchivmeHD/OrderManagement',
-                  }
-                
-                ]
-              },
-
-
             {
               path: '/dashboard',
               name: 'dashboard',

@@ -4,6 +4,8 @@
  */
 import { extend } from 'umi-request';
 import { notification } from 'antd';
+
+
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -53,4 +55,28 @@ const request = extend({
   // 默认错误处理
   credentials: 'include', // 默认请求是否带上cookie
 });
+
+
+// 请求拦截器
+request.interceptors.request.use((url, options) => {
+  if (
+    options.method === 'post' ||
+    options.method === 'put' ||
+    options.method === 'delete' ||
+    options.method === 'get'
+  ) {
+    options.headers = {
+      // 处理header中的token
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem("antd-pro-authority")}`,
+    };
+  }
+  return {
+    url,
+    options: { ...options },
+  };
+});
+
+request.interceptors.response.use(async (response) => response);
 export default request;
